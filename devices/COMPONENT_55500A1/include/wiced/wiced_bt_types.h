@@ -136,6 +136,10 @@ typedef uint8_t wiced_bt_gatt_client_supported_features_t[WICED_BT_GATT_CLIENT_S
 /** GATT Server Support features */
 typedef uint8_t wiced_bt_gatt_server_supported_features_t[WICED_BT_GATT_SERVER_SUPPORTED_FEATURE_OCTET_LEN];
 
+#define BLE_CHANNEL_MAP_LEN 5 /**< AFH Channel Map len */
+/** LE Channel Map */
+typedef uint8_t wiced_bt_ble_chnl_map_t[BLE_CHANNEL_MAP_LEN];
+
 /** UUID Type */
 typedef struct
 {
@@ -346,7 +350,7 @@ typedef uint16_t wiced_bt_gatt_eatt_conn_id_list[L2CAP_ECRB_MAX_CHANNELS_PER_CMD
 /** Copy BDA to stream */
 extern uint8_t *BTU_copyBdaToStream(uint8_t *pStream, uint8_t *pBDA);
 /** Copy Stream to BDA */
-extern uint8_t *BTU_copyStreamToBda(uint8_t *pBDA, uint8_t *pStream);
+extern uint8_t *BTU_copyStreamToBda(uint8_t *pBDA, const uint8_t *pStream);
 
 /** Convert BDA to stream */
 #define BDADDR_TO_STREAM(p, a)   { p = BTU_copyBdaToStream(p, (uint8_t *)(a)); }

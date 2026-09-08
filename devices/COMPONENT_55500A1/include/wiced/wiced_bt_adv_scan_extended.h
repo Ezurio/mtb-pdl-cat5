@@ -214,11 +214,15 @@ enum wiced_ble_ext_conn_initiator_filter_policy_e
     /** Filter Accept List is not used to determine which advertiser to connect to.
      * Peer_Address_Type and Peer_Address shall be used
      * */
-    WICED_BT_BLE_IGNORE_FILTER_ACCEPT_LIST_FOR_CONNS = 0,
+    WICED_BLE_IGNORE_FILTER_ACCEPT_LIST_FOR_CONNS = 0,
+    /** \deprecated use #WICED_BLE_IGNORE_FILTER_ACCEPT_LIST_FOR_CONNS */
+    WICED_BT_BLE_IGNORE_FILTER_ACCEPT_LIST_FOR_CONNS = WICED_BLE_IGNORE_FILTER_ACCEPT_LIST_FOR_CONNS,
     /** Filter Accept List is used to determine which advertiser to connect to.
      * Peer_Address_Type and Peer_Address shall be ignored.
      * */
-    WICED_BT_BLE_USE_FILTER_ACCEPT_LIST_FOR_CONNS = 1,
+    WICED_BLE_USE_FILTER_ACCEPT_LIST_FOR_CONNS = 1,
+    /** \deprecated use #WICED_BLE_USE_FILTER_ACCEPT_LIST_FOR_CONNS */
+    WICED_BT_BLE_USE_FILTER_ACCEPT_LIST_FOR_CONNS = WICED_BLE_USE_FILTER_ACCEPT_LIST_FOR_CONNS,
 };
 /** Initiator filter policy used. (see #wiced_ble_ext_conn_initiator_filter_policy_e) */
 typedef uint8_t wiced_ble_ext_conn_initiator_filter_policy_t;
@@ -468,12 +472,14 @@ typedef union
     wiced_ble_padv_report_event_data_t periodic_adv_report;
     /** Data for WICED_BLE_PERIODIC_ADV_SYNC_LOST_EVENT*/
     wiced_ble_padv_sync_handle_t sync_handle;
-    /** Data for WICED_BT_BLE_ADV_SET_TERMINATED_EVENT*/
+    /** Data for WICED_BLE_ADV_SET_TERMINATED_EVENT*/
     wiced_ble_ext_adv_set_terminated_event_data_t adv_set_terminated;
-    /** Data for WICED_BT_BLE_SCAN_REQUEST_RECEIVED_EVENT*/
+    /** Data for WICED_BLE_SCAN_REQUEST_RECEIVED_EVENT*/
     wiced_ble_ext_scan_req_received_event_data_t scan_req_received;
-    /** Data for WICED_BT_BLE_BIGINFO_ADV_REPORT_EVENT*/
+    /** Data for WICED_BLE_BIGINFO_ADV_REPORT_EVENT*/
     wiced_ble_biginfo_adv_report_t biginfo_adv_report;
+    /** Data for WICED_BLE_SET_PERIODIC_ADV_SYNC_TRANSFER_PARAM_EVENT */
+    wiced_ble_set_padv_sync_transfer_param_event_data_t sync_transfer_param;
     /** Data for WICED_BLE_PERIODIC_ADV_SYNC_TRANSFER_EVENT */
     wiced_ble_padv_sync_transfer_event_data_t sync_transfer;
     /** Data for WICED_BLE_EXT_COMMAND_CMPLT_EVENT*/
@@ -481,9 +487,9 @@ typedef union
 
     /* @cond PAWR_API APIs for Periodic Advertising with Response*/
 
-    /** Data for WICED_BT_BLE_PAWR_SUBEVENT_DATA_REQ_EVENT*/
+    /** Data for WICED_BLE_PAWR_SUBEVENT_DATA_REQ_EVENT*/
     wiced_ble_padv_subevent_data_req_event_data_t pawr_data_req;
-    /** Data for WICED_BT_BLE_PAWR_RSP_REPORT_EVENT*/
+    /** Data for WICED_BLE_PAWR_RSP_REPORT_EVENT*/
     wiced_ble_padv_rsp_report_event_data_t pawr_rsp_report;
     /* @endcond */
 } wiced_ble_ext_adv_event_data_t;
@@ -493,11 +499,17 @@ typedef enum
 {
     /** Advertising set terminated becaue either connection being created or adv timeout.
      * \ref wiced_ble_ext_adv_set_terminated_event_data_t */
-    WICED_BT_BLE_ADV_SET_TERMINATED_EVENT,
+    WICED_BLE_ADV_SET_TERMINATED_EVENT,
+    /** \deprecated use #WICED_BLE_ADV_SET_TERMINATED_EVENT */
+    WICED_BT_BLE_ADV_SET_TERMINATED_EVENT = WICED_BLE_ADV_SET_TERMINATED_EVENT,
     /** scan request received event.  \ref wiced_ble_ext_scan_req_received_event_data_t */
-    WICED_BT_BLE_SCAN_REQUEST_RECEIVED_EVENT,
+    WICED_BLE_SCAN_REQUEST_RECEIVED_EVENT,
+    /** \deprecated use #WICED_BLE_SCAN_REQUEST_RECEIVED_EVENT */
+    WICED_BT_BLE_SCAN_REQUEST_RECEIVED_EVENT = WICED_BLE_SCAN_REQUEST_RECEIVED_EVENT,
     /** BIGInfo adv report event.  \ref wiced_ble_biginfo_adv_report_t */
-    WICED_BT_BLE_BIGINFO_ADV_REPORT_EVENT,
+    WICED_BLE_BIGINFO_ADV_REPORT_EVENT,
+    /** \deprecated use #WICED_BLE_BIGINFO_ADV_REPORT_EVENT*/
+    WICED_BT_BLE_BIGINFO_ADV_REPORT_EVENT = WICED_BLE_BIGINFO_ADV_REPORT_EVENT,
     /** command complete Event.  \ref wiced_ble_cmd_cmplt_event_data_t */
     WICED_BLE_EXT_COMMAND_CMPLT_EVENT,
 
@@ -514,10 +526,16 @@ typedef enum
     /* @cond PAWR_API APIs for Periodic Advertising with Response*/
     /** PAWR event on advertiser to request for subevent data
      * \ref wiced_ble_padv_subevent_data_req_event_data_t */
-    WICED_BT_BLE_PAWR_SUBEVENT_DATA_REQ_EVENT,
+    WICED_BLE_PAWR_SUBEVENT_DATA_REQ_EVENT,
+    /** \deprecated use #WICED_BLE_PAWR_SUBEVENT_DATA_REQ_EVENT */
+    WICED_BT_BLE_PAWR_SUBEVENT_DATA_REQ_EVENT = WICED_BLE_PAWR_SUBEVENT_DATA_REQ_EVENT,
     /** PAWR event on advertiser to report the subevent response data
      * \ref wiced_ble_padv_rsp_report_event_data_t */
-    WICED_BT_BLE_PAWR_RSP_REPORT_EVENT,
+    WICED_BLE_PAWR_RSP_REPORT_EVENT,
+    /** \deprecated use #WICED_BLE_PAWR_RSP_REPORT_EVENT */
+    WICED_BT_BLE_PAWR_RSP_REPORT_EVENT = WICED_BLE_PAWR_RSP_REPORT_EVENT,
+    /** Set Periodic Adv Sync Transfer param Event.  \ref wiced_ble_padv_sync_transfer_event_data_t */
+    WICED_BLE_SET_PERIODIC_ADV_SYNC_TRANSFER_PARAM_EVENT,
     /* @endcond */
 } wiced_ble_ext_adv_event_t;
 

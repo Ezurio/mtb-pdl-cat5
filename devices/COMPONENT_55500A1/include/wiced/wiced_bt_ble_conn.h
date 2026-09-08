@@ -180,12 +180,40 @@ typedef struct
     wiced_bt_iv_t iv;                /**< Initialization Vector */
 } wiced_bt_ble_key_material_t;
 
+/** Initiator filter policy for legacy connections */
+enum wiced_ble_legacy_initiator_filter_policy_e
+{
+    WICED_BLE_LEGACY_INITIATOR_DO_NOT_USE_FILTER_LIST = 0, /**< Do not use filter list, use the peer address and
+                                                           * peer addr type instead
+                                                           */
+    WICED_BLE_LEGACY_INITIATOR_USE_FILTER_LIST = 1         /**< Use the filter list, ignore peer address and peer type */
+} ;
+/** Initiator filter policy for legacy connections, check \ref wiced_ble_legacy_initiator_filter_policy_e */
+typedef uint8_t wiced_ble_legacy_initiator_filter_policy_t;
+
+/** Create Connection parameter for create a legacy LE ACL connection */
+typedef struct
+{
+    /** Time interval from when the Controller started its lastLE scan until it begins the subsequent LE scan.
+     * Range: 0x0004 to 0x4000 Time = N � 0.625 ms Time Range: 2.5 ms to 10.24 s */
+    uint16_t le_scan_interval;
+    /** Amount of time for the duration of the LE scan. LE_Scan_Window shall be less than or equal to LE_Scan_Interval
+     * Range: 0x0004 to 0x4000 Time = N � 0.625 ms Time Range: 2.5 ms to 10.24 s*/
+    uint16_t le_scan_window;
+    /** Initiator filter policy */
+    wiced_ble_legacy_initiator_filter_policy_t initiator_filter_policy;
+    /** peer address type */
+    wiced_bt_ble_address_type_t peer_address_type;
+    /** peer address */
+    wiced_bt_device_address_t peer_address;
+    /** Option to determine own/peer public, random address or generated RPA to be used for initiating the connection */
+    uint8_t own_address_type;
+    /** Preferred connection parameters */
+    wiced_bt_ble_pref_conn_params_t conn_params;
+} wiced_ble_legacy_create_conn_t;
+
+
 #define BTM_AFH_CHNL_MAP_SIZE HCI_AFH_CHANNEL_MAP_LEN /**< AFH channel map size */
-#define BLE_CHANNEL_MAP_LEN 5                         /**< AFH Channel Map len */
-/** LE Channel Map */
-typedef uint8_t wiced_bt_ble_chnl_map_t[BLE_CHANNEL_MAP_LEN];
-
-
 /**
  * Callback wiced_bt_ble_read_phy_complete_callback_t
  *
@@ -630,6 +658,69 @@ wiced_bt_dev_status_t wiced_bt_ble_set_data_packet_length(wiced_bt_device_addres
  */
 wiced_bool_t wiced_bt_smp_create_local_sc_oob_data(wiced_bt_device_address_t bd_addr,
                                                    wiced_bt_ble_address_type_t bd_addr_type);
+
+wiced_result_t wiced_ble_legacy_create_connection(wiced_ble_legacy_create_conn_t *p_legacy_conn_cfg);
+
+/**
+* Structure to get the connection address and type for local an remote devices
+*/
+typedef struct
+{
+    wiced_bt_device_address_t local_bda; /** connection address local */
+    wiced_bt_ble_address_type_t local_type; /** connection address type local */
+    wiced_bt_device_address_t remote_bda; /** connection address remote */
+    wiced_bt_ble_address_type_t remote_type;/** connection address type remote */
+} wiced_ble_conn_event_addr_type_t;
+/**
+* Get the local and remote connection address and type
+* @param[in] bda : peer connection address
+* @param[out] p : pointer to store the connection information
+*
+* @return wiced_result_t
+*/
+wiced_result_t wiced_ble_get_connection_address(wiced_bt_device_address_t bda, wiced_ble_conn_event_addr_type_t *p);
+
+typedef struct
+{
+    uint16_t rpa_tout_min; /**< stores the RPA_Timeout_Min  in seconds */
+    uint16_t rpa_tout_max; /**< stores the RPA_Timeout_Max  in seconds */
+} wiced_ble_rpa_timeout_t;
+
+
+/**
+*
+* Set the time range to be used by the controller after which a new Resolvable Private
+* Address shall start being used in the controller.
+* The new timeout shall be random value between the provided time range.
+*
+*
+* @param[in]       rpa_timeout         :Minimum/Maximum RPA timeout, in seconds
+*
+*
+* @return          wiced_result_t
+* <b> WICED_BT_SUCCESS </b>       : If command sent successfully\n
+* <b> WICED_BT_BADARG </b>        : If an invalid argument\n
+* <b> WICED_BT_ERROR </b>         : otherwise \n
+*
+*/
+
+wiced_result_t wiced_ble_set_rpa_timeout(wiced_ble_rpa_timeout_t* rpa_timeout);
+
+/**
+ * Read the channel map of the LE controller for a given connection.
+ *
+ * @param[in]       bd_addr  : bd_Addr for which the channel map needs to be read
+ *
+ * Calling this API will result in BTM_BLE_ACL_READ_CHANNEL_MAP_EVENT to the application with the channel map.
+ * Where parameter contains 37 1-bit fields indicating the the value for the Link Layer channel index n.
+ *
+ * @return          wiced_result_t
+ * <b> WICED_BT_SUCCESS </b>       : If command sent successfully\n
+ * <b> WICED_BT_NO_RESOURCES </b>   : if could not allocate resources to start the command\n
+ *
+ */
+wiced_result_t wiced_bt_ble_read_channel_map(wiced_bt_device_address_t bd_addr);
+
 #ifdef __cplusplus
 } // extern "C"
 #endif

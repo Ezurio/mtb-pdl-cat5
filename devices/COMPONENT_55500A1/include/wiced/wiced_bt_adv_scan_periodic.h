@@ -258,6 +258,15 @@ typedef struct
     uint8_t response_slot_spacing;
 } wiced_ble_padv_sync_established_event_data_t;
 
+/** Set Periodic Adv Sync Transfer Param Event Data */
+typedef struct
+{
+    /** HCI status */
+    uint8_t status;
+    /** connection handle */
+    wiced_bt_ble_connection_handle_t conn_handle;
+} wiced_ble_set_padv_sync_transfer_param_event_data_t;
+
 /** Periodic Adv Sync Transfer Received Event Data */
 typedef struct
 {

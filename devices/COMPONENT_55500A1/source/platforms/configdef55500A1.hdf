@@ -1,5 +1,5 @@
 # DO NOT EDIT MANUALLY! FW2 VERSION
-# Automatically generated on Thu Jun 19 08:31:36 2025 from firmware 1.2.32
+# Automatically generated on Tue Jul 28 07:48:50 2026 from firmware 1.2.32
 SECTION "Config Data Entries" 0
 {
      COMMAND "Config layout" 0x0100
@@ -18239,6 +18239,1616 @@ SECTION "Config Data Entries" 0
         PARAM "Data"
             uint8[696]
             doc "696 bytes for MultiAdv_LookupTable_T structure";
+    }
+
+     COMMAND "PADGC Table UMC" 0x0711
+    {
+        doc "PADGC Table"
+        PARAM "Num Tx Path"
+            uint8
+            doc "Number of PADGC Tx Path paths"
+            min = 1
+            max = 5;
+        PARAM "Num Modes"
+            uint8
+            doc "Number of modes supported in PADGC Table"
+            min = 1
+            max = 5;
+        PARAM "Num Bins"
+            uint8
+            doc "Number of modes supported in PADC Table"
+            min = 5
+            max = 9;
+        PARAM "Num TSteps"
+            uint8
+            doc "Number of Temperature zones supported in PADGC Table"
+            min = 1
+            max = 6;
+        PARAM "ConfigTableID[0]"
+            uint8
+            doc "PADGC Table ID for path 0"
+            present_if("Num Tx Path" > 0);
+        PARAM "ConfigTxPath[0]"
+            uint8
+            doc "PADGC Tx Path for path 0"
+            present_if("Num Tx Path" > 0);
+        PARAM "ConfigTssiMode[0]"
+            uint8
+            doc "PADGC Tx Path linked TSSI Mode for path 0"
+            present_if("Num Tx Path" > 0);
+        PARAM "ConfigRegAddr[0][0][0]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 0, bin - 0"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 0) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[0][0][1]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 0, bin - 1"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 0) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[0][0][2]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 0, bin - 2"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 0) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[0][0][3]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 0, bin - 3"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 0) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[0][0][4]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 0, bin - 4"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 0) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[0][0][5]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 0, bin - 5"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 0) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[0][0][6]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 0, bin - 6"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 0) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[0][0][7]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 0, bin - 7"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 0) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[0][0][8]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 0, bin - 8"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 0) and ("Num Bins" > 8));
+        PARAM "ConfigRegAddr[0][1][0]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 1, bin - 0"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 1) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[0][1][1]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 1, bin - 1"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 1) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[0][1][2]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 1, bin - 2"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 1) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[0][1][3]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 1, bin - 3"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 1) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[0][1][4]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 1, bin - 4"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 1) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[0][1][5]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 1, bin - 5"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 1) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[0][1][6]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 1, bin - 6"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 1) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[0][1][7]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 1, bin - 7"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 1) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[0][1][8]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 1, bin - 8"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 1) and ("Num Bins" > 8));
+        PARAM "ConfigRegAddr[0][2][0]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 2, bin - 0"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 2) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[0][2][1]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 2, bin - 1"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 2) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[0][2][2]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 2, bin - 2"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 2) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[0][2][3]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 2, bin - 3"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 2) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[0][2][4]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 2, bin - 4"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 2) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[0][2][5]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 2, bin - 5"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 2) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[0][2][6]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 2, bin - 6"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 2) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[0][2][7]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 2, bin - 7"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 2) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[0][2][8]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 2, bin - 8"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 2) and ("Num Bins" > 8));
+        PARAM "ConfigRegAddr[0][3][0]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 3, bin - 0"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 3) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[0][3][1]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 3, bin - 1"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 3) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[0][3][2]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 3, bin - 2"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 3) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[0][3][3]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 3, bin - 3"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 3) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[0][3][4]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 3, bin - 4"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 3) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[0][3][5]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 3, bin - 5"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 3) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[0][3][6]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 3, bin - 6"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 3) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[0][3][7]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 3, bin - 7"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 3) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[0][3][8]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 3, bin - 8"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 3) and ("Num Bins" > 8));
+        PARAM "ConfigRegAddr[0][4][0]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 4, bin - 0"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 4) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[0][4][1]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 4, bin - 1"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 4) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[0][4][2]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 4, bin - 2"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 4) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[0][4][3]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 4, bin - 3"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 4) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[0][4][4]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 4, bin - 4"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 4) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[0][4][5]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 4, bin - 5"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 4) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[0][4][6]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 4, bin - 6"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 4) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[0][4][7]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 4, bin - 7"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 4) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[0][4][8]"
+            uint32
+            doc "PADGC Registers for path - 0, mode - 4, bin - 8"
+            present_if(("Num Tx Path" > 0) and ("Num Modes" > 4) and ("Num Bins" > 8));
+        PARAM "ConfigPadgcData[0]"
+            uint8[0x013b] omit_pad_bytes
+            doc "PADGC Data for path 0"
+            present_if("Num Tx Path" > 0);
+        PARAM "ConfigTableID[1]"
+            uint8
+            doc "PADGC Table ID for path 1"
+            present_if("Num Tx Path" > 1);
+        PARAM "ConfigTxPath[1]"
+            uint8
+            doc "PADGC Tx Path for path 1"
+            present_if("Num Tx Path" > 1);
+        PARAM "ConfigTssiMode[1]"
+            uint8
+            doc "PADGC Tx Path linked TSSI Mode for path 1"
+            present_if("Num Tx Path" > 1);
+        PARAM "ConfigRegAddr[1][0][0]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 0, bin - 0"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 0) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[1][0][1]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 0, bin - 1"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 0) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[1][0][2]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 0, bin - 2"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 0) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[1][0][3]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 0, bin - 3"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 0) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[1][0][4]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 0, bin - 4"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 0) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[1][0][5]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 0, bin - 5"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 0) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[1][0][6]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 0, bin - 6"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 0) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[1][0][7]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 0, bin - 7"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 0) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[1][0][8]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 0, bin - 8"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 0) and ("Num Bins" > 8));
+        PARAM "ConfigRegAddr[1][1][0]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 1, bin - 0"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 1) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[1][1][1]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 1, bin - 1"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 1) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[1][1][2]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 1, bin - 2"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 1) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[1][1][3]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 1, bin - 3"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 1) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[1][1][4]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 1, bin - 4"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 1) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[1][1][5]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 1, bin - 5"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 1) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[1][1][6]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 1, bin - 6"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 1) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[1][1][7]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 1, bin - 7"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 1) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[1][1][8]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 1, bin - 8"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 1) and ("Num Bins" > 8));
+        PARAM "ConfigRegAddr[1][2][0]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 2, bin - 0"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 2) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[1][2][1]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 2, bin - 1"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 2) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[1][2][2]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 2, bin - 2"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 2) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[1][2][3]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 2, bin - 3"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 2) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[1][2][4]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 2, bin - 4"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 2) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[1][2][5]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 2, bin - 5"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 2) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[1][2][6]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 2, bin - 6"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 2) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[1][2][7]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 2, bin - 7"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 2) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[1][2][8]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 2, bin - 8"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 2) and ("Num Bins" > 8));
+        PARAM "ConfigRegAddr[1][3][0]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 3, bin - 0"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 3) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[1][3][1]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 3, bin - 1"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 3) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[1][3][2]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 3, bin - 2"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 3) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[1][3][3]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 3, bin - 3"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 3) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[1][3][4]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 3, bin - 4"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 3) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[1][3][5]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 3, bin - 5"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 3) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[1][3][6]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 3, bin - 6"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 3) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[1][3][7]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 3, bin - 7"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 3) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[1][3][8]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 3, bin - 8"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 3) and ("Num Bins" > 8));
+        PARAM "ConfigRegAddr[1][4][0]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 4, bin - 0"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 4) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[1][4][1]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 4, bin - 1"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 4) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[1][4][2]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 4, bin - 2"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 4) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[1][4][3]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 4, bin - 3"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 4) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[1][4][4]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 4, bin - 4"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 4) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[1][4][5]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 4, bin - 5"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 4) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[1][4][6]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 4, bin - 6"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 4) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[1][4][7]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 4, bin - 7"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 4) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[1][4][8]"
+            uint32
+            doc "PADGC Registers for path - 1, mode - 4, bin - 8"
+            present_if(("Num Tx Path" > 1) and ("Num Modes" > 4) and ("Num Bins" > 8));
+        PARAM "ConfigPadgcData[1]"
+            uint8[0x013b] omit_pad_bytes
+            doc "PADGC Data for path 1"
+            present_if("Num Tx Path" > 1);
+        PARAM "ConfigTableID[2]"
+            uint8
+            doc "PADGC Table ID for path 2"
+            present_if("Num Tx Path" > 2);
+        PARAM "ConfigTxPath[2]"
+            uint8
+            doc "PADGC Tx Path for path 2"
+            present_if("Num Tx Path" > 2);
+        PARAM "ConfigTssiMode[2]"
+            uint8
+            doc "PADGC Tx Path linked TSSI Mode for path 2"
+            present_if("Num Tx Path" > 2);
+        PARAM "ConfigRegAddr[2][0][0]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 0, bin - 0"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 0) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[2][0][1]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 0, bin - 1"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 0) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[2][0][2]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 0, bin - 2"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 0) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[2][0][3]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 0, bin - 3"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 0) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[2][0][4]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 0, bin - 4"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 0) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[2][0][5]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 0, bin - 5"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 0) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[2][0][6]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 0, bin - 6"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 0) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[2][0][7]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 0, bin - 7"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 0) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[2][0][8]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 0, bin - 8"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 0) and ("Num Bins" > 8));
+        PARAM "ConfigRegAddr[2][1][0]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 1, bin - 0"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 1) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[2][1][1]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 1, bin - 1"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 1) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[2][1][2]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 1, bin - 2"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 1) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[2][1][3]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 1, bin - 3"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 1) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[2][1][4]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 1, bin - 4"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 1) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[2][1][5]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 1, bin - 5"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 1) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[2][1][6]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 1, bin - 6"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 1) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[2][1][7]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 1, bin - 7"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 1) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[2][1][8]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 1, bin - 8"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 1) and ("Num Bins" > 8));
+        PARAM "ConfigRegAddr[2][2][0]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 2, bin - 0"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 2) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[2][2][1]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 2, bin - 1"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 2) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[2][2][2]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 2, bin - 2"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 2) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[2][2][3]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 2, bin - 3"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 2) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[2][2][4]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 2, bin - 4"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 2) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[2][2][5]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 2, bin - 5"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 2) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[2][2][6]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 2, bin - 6"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 2) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[2][2][7]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 2, bin - 7"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 2) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[2][2][8]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 2, bin - 8"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 2) and ("Num Bins" > 8));
+        PARAM "ConfigRegAddr[2][3][0]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 3, bin - 0"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 3) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[2][3][1]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 3, bin - 1"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 3) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[2][3][2]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 3, bin - 2"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 3) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[2][3][3]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 3, bin - 3"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 3) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[2][3][4]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 3, bin - 4"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 3) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[2][3][5]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 3, bin - 5"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 3) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[2][3][6]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 3, bin - 6"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 3) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[2][3][7]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 3, bin - 7"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 3) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[2][3][8]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 3, bin - 8"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 3) and ("Num Bins" > 8));
+        PARAM "ConfigRegAddr[2][4][0]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 4, bin - 0"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 4) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[2][4][1]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 4, bin - 1"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 4) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[2][4][2]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 4, bin - 2"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 4) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[2][4][3]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 4, bin - 3"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 4) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[2][4][4]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 4, bin - 4"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 4) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[2][4][5]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 4, bin - 5"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 4) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[2][4][6]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 4, bin - 6"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 4) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[2][4][7]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 4, bin - 7"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 4) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[2][4][8]"
+            uint32
+            doc "PADGC Registers for path - 2, mode - 4, bin - 8"
+            present_if(("Num Tx Path" > 2) and ("Num Modes" > 4) and ("Num Bins" > 8));
+        PARAM "ConfigPadgcData[2]"
+            uint8[0x013b] omit_pad_bytes
+            doc "PADGC Data for path 2"
+            present_if("Num Tx Path" > 2);
+        PARAM "ConfigTableID[3]"
+            uint8
+            doc "PADGC Table ID for path 3"
+            present_if("Num Tx Path" > 3);
+        PARAM "ConfigTxPath[3]"
+            uint8
+            doc "PADGC Tx Path for path 3"
+            present_if("Num Tx Path" > 3);
+        PARAM "ConfigTssiMode[3]"
+            uint8
+            doc "PADGC Tx Path linked TSSI Mode for path 3"
+            present_if("Num Tx Path" > 3);
+        PARAM "ConfigRegAddr[3][0][0]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 0, bin - 0"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 0) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[3][0][1]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 0, bin - 1"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 0) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[3][0][2]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 0, bin - 2"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 0) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[3][0][3]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 0, bin - 3"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 0) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[3][0][4]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 0, bin - 4"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 0) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[3][0][5]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 0, bin - 5"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 0) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[3][0][6]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 0, bin - 6"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 0) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[3][0][7]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 0, bin - 7"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 0) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[3][0][8]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 0, bin - 8"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 0) and ("Num Bins" > 8));
+        PARAM "ConfigRegAddr[3][1][0]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 1, bin - 0"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 1) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[3][1][1]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 1, bin - 1"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 1) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[3][1][2]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 1, bin - 2"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 1) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[3][1][3]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 1, bin - 3"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 1) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[3][1][4]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 1, bin - 4"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 1) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[3][1][5]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 1, bin - 5"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 1) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[3][1][6]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 1, bin - 6"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 1) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[3][1][7]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 1, bin - 7"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 1) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[3][1][8]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 1, bin - 8"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 1) and ("Num Bins" > 8));
+        PARAM "ConfigRegAddr[3][2][0]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 2, bin - 0"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 2) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[3][2][1]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 2, bin - 1"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 2) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[3][2][2]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 2, bin - 2"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 2) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[3][2][3]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 2, bin - 3"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 2) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[3][2][4]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 2, bin - 4"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 2) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[3][2][5]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 2, bin - 5"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 2) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[3][2][6]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 2, bin - 6"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 2) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[3][2][7]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 2, bin - 7"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 2) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[3][2][8]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 2, bin - 8"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 2) and ("Num Bins" > 8));
+        PARAM "ConfigRegAddr[3][3][0]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 3, bin - 0"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 3) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[3][3][1]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 3, bin - 1"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 3) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[3][3][2]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 3, bin - 2"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 3) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[3][3][3]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 3, bin - 3"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 3) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[3][3][4]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 3, bin - 4"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 3) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[3][3][5]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 3, bin - 5"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 3) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[3][3][6]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 3, bin - 6"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 3) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[3][3][7]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 3, bin - 7"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 3) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[3][3][8]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 3, bin - 8"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 3) and ("Num Bins" > 8));
+        PARAM "ConfigRegAddr[3][4][0]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 4, bin - 0"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 4) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[3][4][1]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 4, bin - 1"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 4) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[3][4][2]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 4, bin - 2"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 4) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[3][4][3]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 4, bin - 3"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 4) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[3][4][4]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 4, bin - 4"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 4) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[3][4][5]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 4, bin - 5"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 4) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[3][4][6]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 4, bin - 6"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 4) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[3][4][7]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 4, bin - 7"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 4) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[3][4][8]"
+            uint32
+            doc "PADGC Registers for path - 3, mode - 4, bin - 8"
+            present_if(("Num Tx Path" > 3) and ("Num Modes" > 4) and ("Num Bins" > 8));
+        PARAM "ConfigPadgcData[3]"
+            uint8[0x013b] omit_pad_bytes
+            doc "PADGC Data for path 3"
+            present_if("Num Tx Path" > 3);
+        PARAM "ConfigTableID[4]"
+            uint8
+            doc "PADGC Table ID for path 4"
+            present_if("Num Tx Path" > 4);
+        PARAM "ConfigTxPath[4]"
+            uint8
+            doc "PADGC Tx Path for path 4"
+            present_if("Num Tx Path" > 4);
+        PARAM "ConfigTssiMode[4]"
+            uint8
+            doc "PADGC Tx Path linked TSSI Mode for path 4"
+            present_if("Num Tx Path" > 4);
+        PARAM "ConfigRegAddr[4][0][0]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 0, bin - 0"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 0) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[4][0][1]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 0, bin - 1"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 0) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[4][0][2]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 0, bin - 2"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 0) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[4][0][3]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 0, bin - 3"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 0) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[4][0][4]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 0, bin - 4"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 0) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[4][0][5]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 0, bin - 5"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 0) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[4][0][6]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 0, bin - 6"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 0) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[4][0][7]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 0, bin - 7"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 0) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[4][0][8]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 0, bin - 8"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 0) and ("Num Bins" > 8));
+        PARAM "ConfigRegAddr[4][1][0]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 1, bin - 0"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 1) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[4][1][1]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 1, bin - 1"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 1) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[4][1][2]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 1, bin - 2"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 1) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[4][1][3]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 1, bin - 3"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 1) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[4][1][4]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 1, bin - 4"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 1) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[4][1][5]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 1, bin - 5"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 1) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[4][1][6]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 1, bin - 6"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 1) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[4][1][7]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 1, bin - 7"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 1) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[4][1][8]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 1, bin - 8"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 1) and ("Num Bins" > 8));
+        PARAM "ConfigRegAddr[4][2][0]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 2, bin - 0"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 2) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[4][2][1]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 2, bin - 1"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 2) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[4][2][2]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 2, bin - 2"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 2) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[4][2][3]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 2, bin - 3"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 2) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[4][2][4]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 2, bin - 4"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 2) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[4][2][5]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 2, bin - 5"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 2) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[4][2][6]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 2, bin - 6"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 2) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[4][2][7]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 2, bin - 7"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 2) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[4][2][8]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 2, bin - 8"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 2) and ("Num Bins" > 8));
+        PARAM "ConfigRegAddr[4][3][0]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 3, bin - 0"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 3) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[4][3][1]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 3, bin - 1"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 3) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[4][3][2]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 3, bin - 2"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 3) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[4][3][3]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 3, bin - 3"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 3) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[4][3][4]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 3, bin - 4"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 3) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[4][3][5]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 3, bin - 5"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 3) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[4][3][6]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 3, bin - 6"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 3) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[4][3][7]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 3, bin - 7"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 3) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[4][3][8]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 3, bin - 8"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 3) and ("Num Bins" > 8));
+        PARAM "ConfigRegAddr[4][4][0]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 4, bin - 0"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 4) and ("Num Bins" > 0));
+        PARAM "ConfigRegAddr[4][4][1]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 4, bin - 1"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 4) and ("Num Bins" > 1));
+        PARAM "ConfigRegAddr[4][4][2]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 4, bin - 2"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 4) and ("Num Bins" > 2));
+        PARAM "ConfigRegAddr[4][4][3]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 4, bin - 3"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 4) and ("Num Bins" > 3));
+        PARAM "ConfigRegAddr[4][4][4]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 4, bin - 4"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 4) and ("Num Bins" > 4));
+        PARAM "ConfigRegAddr[4][4][5]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 4, bin - 5"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 4) and ("Num Bins" > 5));
+        PARAM "ConfigRegAddr[4][4][6]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 4, bin - 6"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 4) and ("Num Bins" > 6));
+        PARAM "ConfigRegAddr[4][4][7]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 4, bin - 7"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 4) and ("Num Bins" > 7));
+        PARAM "ConfigRegAddr[4][4][8]"
+            uint32
+            doc "PADGC Registers for path - 4, mode - 4, bin - 8"
+            present_if(("Num Tx Path" > 4) and ("Num Modes" > 4) and ("Num Bins" > 8));
+        PARAM "ConfigPadgcData[4]"
+            uint8[0x013b] omit_pad_bytes
+            doc "PADGC Data for path 4"
+            present_if("Num Tx Path" > 4);
+    }
+
+    COMMAND "Tssical Parameter Table UMC" 0x0712
+    {
+        doc "Tssical Parameter tables. Parameters from legacy TCA tables"
+            "8-bit minimum temperatures with 6 temperature zones"
+            "8-bit binary search range (low, high) of each GFSK, EDR and BLE mode"
+            "16-bit Tssi target values of each GFSK, EDR and BLE mode"
+            "------------------------------------------------------------------------"
+            "UINT8 NumTsteps"
+            "UINT8 Tmin[TCA_NUM_TSTEPS_MAX]"
+            "UINT8 GfskRangeLow"
+            "UINT8 GfskRangeHigh"
+            "UINT8 EdrRangeLow"
+            "UINT8 EdrRangeHigh"
+            "UINT8 BleRangeLow"
+            "UINT8 BleRangeHigh"
+            "UINT8 NumTssiTarget"
+            "UINT16 GfskTarget[TCA_NUM_TSTEPS_MAX][RFP_NUM_OF_FREQ_BINS_9BIN]"
+            "UINT16 EdrTarget[TCA_NUM_TSTEPS_MAX][RFP_NUM_OF_FREQ_BINS_9BIN]"
+            "UINT16 BleTarget[TCA_NUM_TSTEPS_MAX][RFP_NUM_OF_FREQ_BINS_9BIN]"
+            "------------------------------------------------------------------------"
+
+        PARAM "Num TSteps"
+            uint8
+            doc "The number of temperature minimum switching points. The value"
+                 "is actually the desired temperature plus a 50 degree Celsius offset"
+                 "For example, a switching point of -5C would be input as 45"
+                 "NOTE: The accuracy of the temperature sensor is around +/- 8C,"
+                 "therefore switching points should be chosen carefully to avoid"
+                 "repeated adjustments around a switching point."
+            min = 1
+            max = 6;
+        # Min. Temp.
+        PARAM "Tmin[0]"
+            uint8
+            doc "Lowest temperature for region plus 50 degrees celsius offset, for"
+                "example a value of 1 specifies a temperature range starting at 51"
+                "degrees celsius.";
+        PARAM "Tmin[1]"
+            uint8
+            present_if("Num TSteps" > 1);
+        PARAM "Tmin[2]"
+            uint8
+            present_if("Num TSteps" > 2);
+        PARAM "Tmin[3]"
+            uint8
+            present_if("Num TSteps" > 3);
+        PARAM "Tmin[4]"
+            uint8
+            present_if("Num TSteps" > 4);
+        PARAM "Tmin[5]"
+            uint8
+            present_if("Num TSteps" > 5);
+
+        # TSSI ranges - GFSK
+        PARAM "GfskRangeLow"
+            uint8
+            doc "Value of the low endpoint for the PA gain binary search for"
+                "the lowest temperature setting.";
+        PARAM "GfskRangeHigh"
+            uint8
+            doc "Value of the high endpoint for the PA gain binary search for"
+                "the lowest temperture setting.";
+        PARAM "EdrRangeLow"
+            uint8
+            doc "Value of the low endpoint for the PA gain binary search at EDR mode";
+        PARAM "EdrRangeHigh"
+            uint8
+            doc "Value of the high endpoint for the PA gain binary search at EDR mode";
+        PARAM "BleRangeLow"
+            uint8
+            doc "Value of the low endpoint for the PA gain binary search at BLE mode";
+        PARAM "BleRangeHigh"
+            uint8
+            doc "Value of the high endpoint for the PA gain binary search at BLE mode";
+
+        PARAM "Num TssiTargets"
+            uint8
+            doc "No of Tssi Target values per frequency bin";
+
+        # TSSI Target Settings - GFSK
+        PARAM "GfskTarget[0][0]"
+            uint16
+            doc "TSSI target for the GFSK PA gain binary search for"
+                "the TStep0 temperature setting.";
+        PARAM "GfskTarget[0][1]"
+            uint16
+            present_if("Num TssiTargets" > 1);
+        PARAM "GfskTarget[0][2]"
+            uint16
+            present_if("Num TssiTargets" > 2);
+        PARAM "GfskTarget[0][3]"
+            uint16
+            present_if("Num TssiTargets" > 3);
+        PARAM "GfskTarget[0][4]"
+            uint16
+            present_if("Num TssiTargets" > 4);
+        PARAM "GfskTarget[0][5]"
+            uint16
+            present_if("Num TssiTargets" > 5);
+        PARAM "GfskTarget[0][6]"
+            uint16
+            present_if("Num TssiTargets" > 6);
+        PARAM "GfskTarget[0][7]"
+            uint16
+            present_if("Num TssiTargets" > 7);
+        PARAM "GfskTarget[0][8]"
+            uint16
+            present_if("Num TssiTargets" > 8);
+        PARAM "GfskTarget[1][0]"
+            uint16
+            doc "TSSI target for the GFSK PA gain binary search for"
+                "the TStep0 temperature setting."
+            present_if("Num TSteps" > 1);
+        PARAM "GfskTarget[1][1]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 1));
+        PARAM "GfskTarget[1][2]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 2));
+        PARAM "GfskTarget[1][3]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 3));
+        PARAM "GfskTarget[1][4]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 4));
+        PARAM "GfskTarget[1][5]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 5));
+        PARAM "GfskTarget[1][6]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 6));
+        PARAM "GfskTarget[1][7]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 7));
+        PARAM "GfskTarget[1][8]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 8));
+        PARAM "GfskTarget[2][0]"
+            uint16
+            doc "TSSI target for the GFSK PA gain binary search for"
+                "the TStep0 temperature setting."
+            present_if("Num TSteps" > 2);
+        PARAM "GfskTarget[2][1]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 1));
+        PARAM "GfskTarget[2][2]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 2));
+        PARAM "GfskTarget[2][3]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 3));
+        PARAM "GfskTarget[2][4]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 4));
+        PARAM "GfskTarget[2][5]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 5));
+        PARAM "GfskTarget[2][6]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 6));
+        PARAM "GfskTarget[2][7]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 7));
+        PARAM "GfskTarget[2][8]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 8));
+        PARAM "GfskTarget[3][0]"
+            uint16
+            doc "TSSI target for the GFSK PA gain binary search for"
+                "the TStep0 temperature setting."
+            present_if("Num TSteps" > 3);
+        PARAM "GfskTarget[3][1]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 1));
+        PARAM "GfskTarget[3][2]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 2));
+        PARAM "GfskTarget[3][3]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 3));
+        PARAM "GfskTarget[3][4]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 4));
+        PARAM "GfskTarget[3][5]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 5));
+        PARAM "GfskTarget[3][6]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 6));
+        PARAM "GfskTarget[3][7]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 7));
+        PARAM "GfskTarget[3][8]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 8));
+        PARAM "GfskTarget[4][0]"
+            uint16
+            doc "TSSI target for the GFSK PA gain binary search for"
+                "the TStep0 temperature setting."
+            present_if("Num TSteps" > 4);
+        PARAM "GfskTarget[4][1]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 1));
+        PARAM "GfskTarget[4][2]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 2));
+        PARAM "GfskTarget[4][3]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 3));
+        PARAM "GfskTarget[4][4]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 4));
+        PARAM "GfskTarget[4][5]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 5));
+        PARAM "GfskTarget[4][6]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 6));
+        PARAM "GfskTarget[4][7]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 7));
+        PARAM "GfskTarget[4][8]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 8));
+        PARAM "GfskTarget[5][0]"
+            uint16
+            doc "TSSI target for the GFSK PA gain binary search for"
+                "the TStep0 temperature setting."
+            present_if("Num TSteps" > 5);
+        PARAM "GfskTarget[5][1]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 1));
+        PARAM "GfskTarget[5][2]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 2));
+        PARAM "GfskTarget[5][3]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 3));
+        PARAM "GfskTarget[5][4]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 4));
+        PARAM "GfskTarget[5][5]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 5));
+        PARAM "GfskTarget[5][6]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 6));
+        PARAM "GfskTarget[5][7]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 7));
+        PARAM "GfskTarget[5][8]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 8));
+
+        # TSSI Target Settings - EDR
+        PARAM "EdrTarget[0][0]"
+            uint16
+            doc "TSSI target for the EDR PA gain binary search for"
+                "the TStep0 temperature setting.";
+        PARAM "EdrTarget[0][1]"
+            uint16
+            present_if("Num TssiTargets" > 1);
+        PARAM "EdrTarget[0][2]"
+            uint16
+            present_if("Num TssiTargets" > 2);
+        PARAM "EdrTarget[0][3]"
+            uint16
+            present_if("Num TssiTargets" > 3);
+        PARAM "EdrTarget[0][4]"
+            uint16
+            present_if("Num TssiTargets" > 4);
+        PARAM "EdrTarget[0][5]"
+            uint16
+            present_if("Num TssiTargets" > 5);
+        PARAM "EdrTarget[0][6]"
+            uint16
+            present_if("Num TssiTargets" > 6);
+        PARAM "EdrTarget[0][7]"
+            uint16
+            present_if("Num TssiTargets" > 7);
+        PARAM "EdrTarget[0][8]"
+            uint16
+            present_if("Num TssiTargets" > 8);
+        PARAM "EdrTarget[1][0]"
+            uint16
+            doc "TSSI target for the EDR PA gain binary search for"
+                "the TStep0 temperature setting."
+            present_if("Num TSteps" > 1);
+        PARAM "EdrTarget[1][1]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 1));
+        PARAM "EdrTarget[1][2]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 2));
+        PARAM "EdrTarget[1][3]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 3));
+        PARAM "EdrTarget[1][4]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 4));
+        PARAM "EdrTarget[1][5]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 5));
+        PARAM "EdrTarget[1][6]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 6));
+        PARAM "EdrTarget[1][7]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 7));
+        PARAM "EdrTarget[1][8]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 8));
+        PARAM "EdrTarget[2][0]"
+            uint16
+            doc "TSSI target for the EDR PA gain binary search for"
+                "the TStep0 temperature setting."
+            present_if("Num TSteps" > 2);
+        PARAM "EdrTarget[2][1]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 1));
+        PARAM "EdrTarget[2][2]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 2));
+        PARAM "EdrTarget[2][3]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 3));
+        PARAM "EdrTarget[2][4]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 4));
+        PARAM "EdrTarget[2][5]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 5));
+        PARAM "EdrTarget[2][6]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 6));
+        PARAM "EdrTarget[2][7]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 7));
+        PARAM "EdrTarget[2][8]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 8));
+        PARAM "EdrTarget[3][0]"
+            uint16
+            doc "TSSI target for the EDR PA gain binary search for"
+                "the TStep0 temperature setting."
+            present_if("Num TSteps" > 3);
+        PARAM "EdrTarget[3][1]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 1));
+        PARAM "EdrTarget[3][2]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 2));
+        PARAM "EdrTarget[3][3]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 3));
+        PARAM "EdrTarget[3][4]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 4));
+        PARAM "EdrTarget[3][5]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 5));
+        PARAM "EdrTarget[3][6]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 6));
+        PARAM "EdrTarget[3][7]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 7));
+        PARAM "EdrTarget[3][8]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 8));
+        PARAM "EdrTarget[4][0]"
+            uint16
+            doc "TSSI target for the EDR PA gain binary search for"
+                "the TStep0 temperature setting."
+            present_if("Num TSteps" > 4);
+        PARAM "EdrTarget[4][1]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 1));
+        PARAM "EdrTarget[4][2]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 2));
+        PARAM "EdrTarget[4][3]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 3));
+        PARAM "EdrTarget[4][4]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 4));
+        PARAM "EdrTarget[4][5]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 5));
+        PARAM "EdrTarget[4][6]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 6));
+        PARAM "EdrTarget[4][7]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 7));
+        PARAM "EdrTarget[4][8]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 8));
+        PARAM "EdrTarget[5][0]"
+            uint16
+            doc "TSSI target for the EDR PA gain binary search for"
+                "the TStep0 temperature setting."
+            present_if("Num TSteps" > 5);
+        PARAM "EdrTarget[5][1]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 1));
+        PARAM "EdrTarget[5][2]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 2));
+        PARAM "EdrTarget[5][3]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 3));
+        PARAM "EdrTarget[5][4]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 4));
+        PARAM "EdrTarget[5][5]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 5));
+        PARAM "EdrTarget[5][6]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 6));
+        PARAM "EdrTarget[5][7]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 7));
+        PARAM "EdrTarget[5][8]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 8));
+
+        # TSSI Target Settings - BLE
+        PARAM "BleTarget[0][0]"
+            uint16
+            doc "TSSI target for the BLE PA gain binary search for"
+                "the TStep0 temperature setting.";
+        PARAM "BleTarget[0][1]"
+            uint16
+            present_if("Num TssiTargets" > 1);
+        PARAM "BleTarget[0][2]"
+            uint16
+            present_if("Num TssiTargets" > 2);
+        PARAM "BleTarget[0][3]"
+            uint16
+            present_if("Num TssiTargets" > 3);
+        PARAM "BleTarget[0][4]"
+            uint16
+            present_if("Num TssiTargets" > 4);
+        PARAM "BleTarget[0][5]"
+            uint16
+            present_if("Num TssiTargets" > 5);
+        PARAM "BleTarget[0][6]"
+            uint16
+            present_if("Num TssiTargets" > 6);
+        PARAM "BleTarget[0][7]"
+            uint16
+            present_if("Num TssiTargets" > 7);
+        PARAM "BleTarget[0][8]"
+            uint16
+            present_if("Num TssiTargets" > 8);
+        PARAM "BleTarget[1][0]"
+            uint16
+            doc "TSSI target for the BLE PA gain binary search for"
+                "the TStep0 temperature setting."
+            present_if("Num TSteps" > 1);
+        PARAM "BleTarget[1][1]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 1));
+        PARAM "BleTarget[1][2]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 2));
+        PARAM "BleTarget[1][3]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 3));
+        PARAM "BleTarget[1][4]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 4));
+        PARAM "BleTarget[1][5]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 5));
+        PARAM "BleTarget[1][6]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 6));
+        PARAM "BleTarget[1][7]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 7));
+        PARAM "BleTarget[1][8]"
+            uint16
+            present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 8));
+        PARAM "BleTarget[2][0]"
+            uint16
+            doc "TSSI target for the BLE PA gain binary search for"
+                "the TStep0 temperature setting."
+            present_if("Num TSteps" > 2);
+        PARAM "BleTarget[2][1]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 1));
+        PARAM "BleTarget[2][2]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 2));
+        PARAM "BleTarget[2][3]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 3));
+        PARAM "BleTarget[2][4]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 4));
+        PARAM "BleTarget[2][5]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 5));
+        PARAM "BleTarget[2][6]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 6));
+        PARAM "BleTarget[2][7]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 7));
+        PARAM "BleTarget[2][8]"
+            uint16
+            present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 8));
+        PARAM "BleTarget[3][0]"
+            uint16
+            doc "TSSI target for the BLE PA gain binary search for"
+                "the TStep0 temperature setting."
+            present_if("Num TSteps" > 3);
+        PARAM "BleTarget[3][1]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 1));
+        PARAM "BleTarget[3][2]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 2));
+        PARAM "BleTarget[3][3]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 3));
+        PARAM "BleTarget[3][4]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 4));
+        PARAM "BleTarget[3][5]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 5));
+        PARAM "BleTarget[3][6]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 6));
+        PARAM "BleTarget[3][7]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 7));
+        PARAM "BleTarget[3][8]"
+            uint16
+            present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 8));
+        PARAM "BleTarget[4][0]"
+            uint16
+            doc "TSSI target for the BLE PA gain binary search for"
+                "the TStep0 temperature setting."
+            present_if("Num TSteps" > 4);
+        PARAM "BleTarget[4][1]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 1));
+        PARAM "BleTarget[4][2]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 2));
+        PARAM "BleTarget[4][3]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 3));
+        PARAM "BleTarget[4][4]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 4));
+        PARAM "BleTarget[4][5]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 5));
+        PARAM "BleTarget[4][6]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 6));
+        PARAM "BleTarget[4][7]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 7));
+        PARAM "BleTarget[4][8]"
+            uint16
+            present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 8));
+        PARAM "BleTarget[5][0]"
+            uint16
+            doc "TSSI target for the BLE PA gain binary search for"
+                "the TStep0 temperature setting."
+            present_if("Num TSteps" > 5);
+        PARAM "BleTarget[5][1]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 1));
+        PARAM "BleTarget[5][2]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 2));
+        PARAM "BleTarget[5][3]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 3));
+        PARAM "BleTarget[5][4]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 4));
+        PARAM "BleTarget[5][5]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 5));
+        PARAM "BleTarget[5][6]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 6));
+        PARAM "BleTarget[5][7]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 7));
+        PARAM "BleTarget[5][8]"
+            uint16
+            present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 8));
     }
 
      COMMAND "I15DOT4 ieee address" 0x0900

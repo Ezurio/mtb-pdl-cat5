@@ -568,6 +568,7 @@
 #undef  HWWA_AUX_CONN_RSP_ANTENNA
 #undef  ONESHOT_ADV
 #define LE_RELE_ENABLE 1
+#define BT6_1_BLE_FEATURES 1
 
 /*
  * HCI Configuration

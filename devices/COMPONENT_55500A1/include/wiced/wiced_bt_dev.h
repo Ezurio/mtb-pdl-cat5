@@ -644,7 +644,7 @@ typedef struct
 }wiced_bt_local_id_keys;
 
 
-/** LE identity key for local device (used by BTM_LE_LOCAL_IDENTITY_KEYS_UPDATE_EVT and BTM_LE_LOCAL_KEYS_REQUEST_EVT notification) */
+/** LE identity key for local device (used by #BTM_LOCAL_IDENTITY_KEYS_UPDATE_EVT and #BTM_LOCAL_IDENTITY_KEYS_REQUEST_EVT notification) */
 typedef struct {
     uint8_t            key_type_mask;  /**< The type of the key (BTM_BLE_KEY_TYPE_ID or BTM_BLE_KEY_TYPE_ER) */
     wiced_bt_local_id_keys id_keys;  /**< Local ID Keys    */
@@ -666,6 +666,19 @@ typedef struct
     uint16_t                    conn_latency;       /**< updated connection latency */
     uint16_t                    supervision_timeout;/**< updated supervision timeout */
 } wiced_bt_ble_connection_param_update_t;
+
+/** LE connection parameter request event related data */
+typedef struct
+{
+    uint8_t deny;                      /**< allow or deny request, set 0 to allow, 1 to deny */
+    wiced_bt_device_address_t bd_addr; /**< peer bd address */
+    uint16_t min_interval;             /**< requested min connection interval */
+    uint16_t max_interval;             /**< requested max connection interval */
+    uint16_t conn_latency;             /**< requested connection latency */
+    uint16_t supervision_timeout;      /**< requested supervision timeout */
+    uint16_t min_ce_len;               /**< min connection event length preferred */
+    uint16_t max_ce_len;               /**< max connection event length preferred */
+} wiced_bt_ble_connection_param_request_t;
 
 /** LE Physical link update event related data */
 typedef struct
@@ -1075,12 +1088,33 @@ enum wiced_bt_management_evt_e {
      * Event data: \ref wiced_bt_management_evt_data_t.ble_second_link_info
      */
     BTM_BLE_SECOND_LINK_INFO_EVENT,                /* 42, 0x2A */
+        /**
+     * Event to allow application to allow/deny the incoming connection parameter update
+     * request.
+     * To allow the request set \ref wiced_bt_ble_connection_param_request_t.deny to 0.
+     * To deny the request set \ref wiced_bt_ble_connection_param_request_t.deny 1
+     * Event data: \ref wiced_bt_management_evt_data_t.ble_connection_param_request
+     */
+    BTM_BLE_CONNECTION_PARAM_REQUEST_EVENT,        /* 43, 0x2B */
+
+    /**
+     * Event to notify the channel map read for BR/EDR ACL link
+     * Event data: \ref wiced_bt_management_evt_data_t.br_acl_read_channel_map_event
+     */
+    BTM_BR_ACL_READ_CHANNEL_MAP_EVENT,    /* 44, 0x2C */
+    /**
+    * Event to notify the channel map read for LE ACL link
+    * Event data: \ref wiced_bt_management_evt_data_t.ble_acl_read_channel_map_event
+    */
+    BTM_BLE_ACL_READ_CHANNEL_MAP_EVENT, /* 45, 0x2D */
+
 #if SMP_CATB_CONFORMANCE_TESTER == TRUE
     /**
      * The Secure Connections support information of the peer device.
      */
-    BTM_SMP_SC_PEER_INFO_EVT,                      /* 43, 0x2B */
+    BTM_SMP_SC_PEER_INFO_EVT,                      /* 45, 0x2D */
 #endif
+
 };
 #endif
 typedef uint8_t wiced_bt_management_evt_t;          /**< Bluetooth management events (see #wiced_bt_management_evt_e) */
@@ -1260,9 +1294,18 @@ typedef struct wiced_bt_lq_br_edr_stats_s
     uint16_t seqnRepeat;        /**< seqnRepeat packet count */
 }wiced_bt_lq_br_edr_stats;
 
+/** Link statistics for ACL/SCO connections */
+typedef struct
+{
+    uint32_t re_transmit_count;     /**< Retransmit packet count */
+    uint16_t re_transmit_percent;   /**< Retransmit percent */
+    uint16_t packet_error_rate;     /**< Packet error rate */
+}wiced_bt_lq_acl_stats;
+
 /** LE link statistics */
 typedef struct wiced_bt_lq_le_stats_s
 {
+    wiced_bt_lq_acl_stats  lq_acl_stats;
     uint32_t  tx_pkt_cnt;           /**< transmit packet count */
     uint32_t  tx_acked_cnt;         /**< transmit packet acknowledged count */
     uint32_t  rx_good_pkt_cnt;      /**< received good packet count */
@@ -1277,11 +1320,12 @@ typedef struct wiced_bt_lq_stats_result_s
     uint8_t   status;             /**< event status */
     uint16_t  conn_handle;        /**< connection handle of link quality stats */
     uint8_t   action;             /**< see wiced_bt_dev_link_quality_stats_param for options */
+    uint8_t   conn_type;         /**< Connection type */
     /** LQ Quality Statistics */
     union
     {
-        wiced_bt_lq_br_edr_stats br_edr_stats; /**< br edr statistics */
-        wiced_bt_lq_le_stats     le_stats;     /**< le statistics */
+        wiced_bt_lq_br_edr_stats br_edr_stats; /**< BR/EDR connection LQ statistics */
+        wiced_bt_lq_le_stats     le_stats;     /**< LE connection LQ statistics */
     }wiced_bt_lq_stats;
 } wiced_bt_lq_stats_result_t;
 
@@ -1394,6 +1438,22 @@ typedef struct
     /* remaining RFU */
 } wiced_bt_ble_channel_sel_algo_event_data_t;
 
+/** BR/EDR read channel map event data format */
+typedef struct
+{
+    uint8_t hci_status; /**< status */
+    wiced_bt_device_address_t remote_addr;  /**< peer address */
+    uint8_t afh_mode;   /**< AFH Mode */
+    wiced_bt_br_chnl_map_t channel_map;   /**< channel map used for this connection (only 0-78 bits are valid. MSB bit 79 is RFU)*/
+} wiced_bt_read_channel_map_event_data_t;
+
+/** LE read channel map event data format */
+typedef struct
+{
+    uint8_t hci_status;                                 /**< status */
+    wiced_bt_ble_connection_handle_t connection_handle; /**< LE ACL connection handle */
+    wiced_bt_ble_chnl_map_t  channel_map; /**< channel map used for this connection (only 0-36 bits are valid. MSB bit 37 is RFU)*/
+} wiced_bt_ble_read_channel_map_event_data_t;
 
 /** Structure definitions for Bluetooth Management (wiced_bt_management_cback_t) event notifications */
 typedef union
@@ -1445,6 +1505,9 @@ typedef union
     wiced_bt_ble_device_addr_update_t       ble_addr_update_event;              /**< Data for BTM_BLE_DEVICE_ADDRESS_UPDATE_EVENT */
     wiced_bt_ble_channel_sel_algo_event_data_t ble_channel_sel_algo_event;      /**< Data for BTM_BLE_CHANNEL_SELECTION_ALGO_EVENT*/
     wiced_bt_ble_second_link_info           ble_second_link_info;               /**< Data for BTM_BLE_SECOND_LINK_INFO_EVENT */
+    wiced_bt_ble_connection_param_request_t ble_connection_param_request;       /**< Data for BTM_BLE_CONNECTION_PARAM_REQUEST_EVENT */
+    wiced_bt_read_channel_map_event_data_t  br_read_channel_map_event;          /**< Data for #BTM_BR_ACL_READ_CHANNEL_MAP_EVENT */
+    wiced_bt_ble_read_channel_map_event_data_t ble_read_channel_map_event;      /**< Data for #BTM_BLE_ACL_READ_CHANNEL_MAP_EVENT */
 #if SMP_CATB_CONFORMANCE_TESTER == TRUE
     wiced_bt_ble_sc_peer_info               smp_sc_peer_info;                   /* Data for BTM_SMP_SC_PEER_INFO_EVT */
 #endif
@@ -1831,6 +1894,23 @@ wiced_result_t wiced_bt_dev_switch_role( wiced_bt_device_address_t remote_bd_add
 *
 */
 wiced_bt_dev_status_t wiced_bt_dev_set_afh_channel_classification(const wiced_bt_br_chnl_map_t afh_channel_map);
+
+
+/**
+*
+* This function is called to read the current AFH Channel Map for a specific ACL connection.
+* The channel map information is received via the #BTM_BR_ACL_READ_CHANNEL_MAP_EVENT.
+*
+* @param[in]       remote_bda :  Remote device address
+*
+* @return          wiced_result_t
+*
+* <b> WICED_BT_SUCCESS </b>      : Command sent successfully \n
+* <b> WICED_BT_WRONG_MODE </b>   : Device is not up or no ACL connection \n
+* <b> WICED_BT_NO_RESOURCES </b> : No resources to send the command
+*
+**/
+wiced_result_t wiced_bt_dev_read_afh_channel_map(wiced_bt_device_address_t remote_bda);
 
 /**
 *

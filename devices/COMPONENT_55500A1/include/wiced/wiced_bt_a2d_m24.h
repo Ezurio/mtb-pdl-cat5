@@ -64,6 +64,9 @@
 #define A2D_M24_IE_OBJ_4LC          0x40    /**< b6: MPEG-4 AAC LC */
 #define A2D_M24_IE_OBJ_4LTP         0x20    /**< b5: MPEG-4 AAC LTP */
 #define A2D_M24_IE_OBJ_4S           0x10    /**< b4: MPEG-4 AAC scalable */
+#define A2D_M24_IE_OBJ_4HE          0x08    /**< b3: MPEG-4 HE-AAC */
+#define A2D_M24_IE_OBJ_4HE2         0x04    /**< b2: MPEG-4 HE-AACv2 */
+#define A2D_M24_IE_OBJ_4ELD2        0x02    /**< b1: MPEG-4 AAC ELDv2 */
 /** @} A2D_M24_OBJ */
 
 /**
@@ -121,6 +124,7 @@ typedef struct
     uint8_t       chnl;       /**< Channel mode \ref A2D_M24_CH_MD */
     uint8_t       vbr;        /**< Variable Bit Rate */
     uint32_t      bitrate;    /**< Bit rate index \ref A2D_M24_BITRATE */
+    uint8_t       drc;
 } wiced_bt_a2d_m24_cie_t;
 
 /*****************************************************************************

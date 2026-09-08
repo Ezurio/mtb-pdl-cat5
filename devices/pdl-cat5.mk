@@ -50,6 +50,8 @@ ifeq ($(CHIP_NAME), $(filter $(CHIP_NAME), 55500A1 55900A0))
         CHIP_PATCH_DIR_ANT=wlbga_iPA_sLNA_ANT0
     else ifeq ($(CHIP_ANT_SEL),DLNA_BTANT)
         CHIP_PATCH_DIR_ANT=wlbga_iPA_dLNA_BTANT
+    else ifeq ($(CHIP_ANT_SEL),SLNA_ANT0_LHL_XTAL_IN)
+        CHIP_PATCH_DIR_ANT=wlbga_iPA_sLNA_ANT0_LHL_XTAL_IN
     else
         CHIP_ANT_SEL=DLNA_ANT0
     endif

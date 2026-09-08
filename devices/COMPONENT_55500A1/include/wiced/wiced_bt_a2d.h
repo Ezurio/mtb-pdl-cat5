@@ -133,6 +133,11 @@
 #define A2D_BAD_BLOCK_LEN     0xDD  /**< None or multiple values have been selected for Block Length */
 #define A2D_BAD_CP_TYPE       0xE0  /**< The requested CP Type is not supported. */
 #define A2D_BAD_CP_FORMAT     0xE1  /**< The format of Content Protection Service Capability/Content Protection Scheme Dependent Data is not correct. */
+#define A2D_INVALID_CODEC_PARAM     0xE2  /**< The codec parameter is invalid. Used if a more specific error code does not exist for the codec in use.*/
+#define A2D_NS_CODEC_PARAM          0xE3  /**< The codec parameter is not supported. Used if a more specific error code does not exist for the codec in use.*/
+#define A2D_INVALID_DRC             0xE4  /**< Combination of Object Type and DRC is invalid (Used in MPEG 2/4AAC) */
+#define A2D_NS_DRC                  0xE5  /**< DRC not supported (Used in MPEG 2/4AAC) */
+
 
 typedef uint8_t wiced_bt_a2d_status_t; /**< A2DP status codes */
 

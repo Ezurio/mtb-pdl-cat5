@@ -121,6 +121,8 @@ enum wiced_ble_isoc_event_e
     WICED_BLE_ISOC_BIG_SYNC_ESTABLISHED_EVT,  /**< BIG Sync Established, \ref wiced_ble_isoc_big_sync_established_evt_t */
     WICED_BLE_ISOC_BIG_TERMINATED_EVT,        /**< BIG Terminated, \ref wiced_ble_isoc_terminated_evt_t */
     WICED_BLE_ISOC_BIG_SYNC_LOST_EVT,         /**< BIG Sync Lost, \ref wiced_ble_isoc_terminated_evt_t */
+    WICED_BLE_ISOC_BIG_TERMINATED_SYNC_EVT,   /**< BIG Sync Terminated, \ref wiced_ble_isoc_terminated_evt_t */
+    WICED_BLE_ISOC_READ_ISO_LINK_QUALITY_EVT, /**< Read ISO Link Quality, \ref wiced_ble_isoc_read_iso_link_quality_evt_t */
 };
 typedef uint8_t wiced_ble_isoc_event_t; /**< ISOC Events (see #wiced_ble_isoc_event_e) */
 
@@ -259,6 +261,30 @@ typedef struct
 } wiced_ble_isoc_terminated_evt_t;
 
 
+/** ISOC BIG Terminate Sync event data
+* Returned with \ref WICED_BLE_ISOC_BIG_TERMINATED_EVT and
+* \ref WICED_BLE_ISOC_BIG_TERMINATED_SYNC_EVT events
+*/
+typedef struct
+{
+    uint8_t status;     /**< BIG Terminate Sync Status (0 = Success). Refer Core Spec v5.2 [Vol 1] Part F, Controller Error Codes */
+    uint8_t big_handle; /**< BIG Handle */
+} wiced_ble_isoc_big_terminated_sync_evt_t;
+
+typedef struct
+{
+    uint8_t status;     /**< HCI_LE_Read_ISO_Link_Quality command succeeded (0 = Success)*/
+    uint16_t conn_hdl;  /**< CIS/BIS Connection Handle  */
+    uint32_t tx_unacked_packets; /**< Number of unacknowledged packets */
+    uint32_t tx_flushed_packets; /**< Number of flushed packets */
+    uint32_t tx_last_subevent_packets; /**< Number of packets in last subevent(CIS in Peripheral
+role)) */
+    uint32_t retransmitted_packets; /**< Number of retransmitted packets */
+    uint32_t crc_error_packets; /**< Number of CRC error packets */
+    uint32_t rx_unreceived_packets; /**< Number of unreceived packets */
+    uint32_t duplicate_packets; /**< Number of duplicate packets */
+}  wiced_ble_isoc_read_iso_link_quality_evt_t;
+
 /** ISOC event data */
 typedef union
 {
@@ -272,6 +298,8 @@ typedef union
     wiced_ble_isoc_terminated_evt_t terminate_big;                  /**< Terminate BIG Command Status */
     wiced_ble_isoc_big_sync_established_evt_t big_sync_established; /**< BIG Sync Established data */
     wiced_ble_isoc_terminated_evt_t big_sync_lost;                  /**< BIG Sync Lost Data */
+    wiced_ble_isoc_big_terminated_sync_evt_t big_sync_terminated;   /**< BIG Terminate Sync */
+    wiced_ble_isoc_read_iso_link_quality_evt_t read_iso_link_quality; /**< Read ISO Link Quality */
 } wiced_ble_isoc_event_data_t;
 
 /** ISOC CIS Configuration */
@@ -684,9 +712,10 @@ wiced_result_t wiced_ble_isoc_setup_data_path(wiced_ble_isoc_setup_data_path_inf
  * @param data_path_dir_bitfield see #wiced_ble_isoc_data_path_bit_t
  *                               bit 0: Remove Input data path
  *                               bit 1: Remove output data path
- * @return wiced_bool_t TRUE if successful in sending the command
+ * @param  p_app_ctx  Application provided context, returned to the application
+ * @return wiced_result_t
  */
-wiced_bool_t wiced_ble_isoc_remove_data_path(uint16_t isoc_conn_hdl, wiced_ble_isoc_data_path_bit_t data_path_dir_bitfield);
+wiced_result_t wiced_ble_isoc_remove_data_path(uint16_t isoc_conn_hdl, wiced_ble_isoc_data_path_bit_t data_path_dir_bitfield , void *p_app_ctx);
 
 /**
  * @brief Get status of the ISO CIS/BIS data path
@@ -729,6 +758,15 @@ wiced_bool_t wiced_ble_isoc_is_data_path_active(uint8_t cig_id,
   */
  wiced_result_t wiced_ble_isoc_read_tx_sync(uint16_t isoc_conn_hdl,
                                            wiced_ble_isoc_read_tx_sync_complete_cback_t *p_cback);
+
+ /**
+    * @brief This function is used to read the link quality of a CIS/BIS connection handle.
+    *
+    * @param conn_hdl: CIS/BIS Connection handle
+    *
+    * @return             : WICED_SUCCESS if successful
+    */
+ wiced_result_t wiced_ble_read_iso_link_quality(uint16_t conn_hdl);
 
 
 /**@} wicedbt_isoc_functions */

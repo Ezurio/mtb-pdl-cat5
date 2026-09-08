@@ -34,9 +34,9 @@ DevicePreset "55500A1_wlbga_iPA_dLNA_ANT0 RAM"
     DLConfigSerialControlBaudRate = 115200
     DLConfigEEPROMAccessSpeed = 100
     DLConfigVSOffset = 0
-    ConfigDSLocation = 2151849984
+    ConfigDSLocation = 2151866368
     ConfigDS2Location = 0
-    DLConfigSSLocation = 2151817216
+    DLConfigSSLocation = 2151833600
     DLConfigIncludeBTWSecurityKey = 0
     DLConfigVSLocation = 0
     DLConfigVSLength = 0

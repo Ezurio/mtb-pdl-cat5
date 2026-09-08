@@ -360,6 +360,32 @@ void wiced_bt_stack_init_internal(wiced_bt_management_cback_t mgmt_cback,
  */
 void wiced_bt_stack_shutdown(void);
 
+
+/**
+* Called by porting layer to get the stored local keys from the app.
+* If application returns WICED_SUCCESS, the keys are written to the stack to start
+* Controller based address resolution with \ref wiced_ble_init_ctlr_private_addr_generation or
+* Host based address resolution with \ref wiced_ble_init_host_private_addr_generation
+* Else, \ref wiced_ble_create_local_identity_keys call needs to be invoked
+*/
+wiced_result_t wiced_ble_read_local_identity_keys_from_app(wiced_bt_local_identity_keys_t *p_local_keys);
+
+
+/**
+ * API to write back saved local keys and controller based address generation.
+ * The local keys sent down in this call are used to generate the local RPA (Resolvable
+ * Private Address). The RPA generated is required to be refreshed periodically by the controller based on the
+ * suggested \ref wiced_bt_cfg_ble_t.rpa_refresh_timeout member of wiced_bt_cfg_settings_t.p_ble_cfg
+ *
+ * @param[in] p_local_keys : device local keys generated from a previous call to
+ * \ref wiced_ble_create_local_identity_keys
+ *
+ * @return  wiced_result_t
+ *
+ */
+wiced_result_t wiced_ble_init_ctlr_private_addr_generation(wiced_bt_local_identity_keys_t *p_local_keys);
+
+
 /**@} wiced_bt_platform_group */
 
 #endif //__WICED_BT_STACK_PLATFORM_H__
